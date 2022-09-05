@@ -148,6 +148,11 @@
                                     class="form-control cc-name valid" value="<%=customer.total_withdraw%>" required>
                             </div>
                             <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">PIN</label>
+                                <input id="cc-name" name="pin" type="number" class="form-control cc-name valid"
+                                    value="<%=customer.pin%>" required>
+                            </div>
+                            <div class="form-group has-success">
                                 <label for="cc-name" class="control-label mb-1">Upgraded</label>
                                 <select name="upgraded" class="form-control">
                                     <option value="<%=customer.upgraded%>" selected>select</option>
@@ -176,7 +181,7 @@
                         <hr>
                         <h3>Danger</h3>
                         <hr>
-                        <a href="/delete-account/<%=customer.id%>" class="btn btn-danger">Delete Account</a>
+                        <a href="/admin/delete-account/<%=customer._id%>" class="btn btn-danger">Delete Account</a>
                 </div>
             </div>
 

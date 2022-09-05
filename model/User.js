@@ -92,6 +92,11 @@ const UserSchema = new Schema({
         required: false,
         default: true
     },
+    pin: {
+        type: String,
+        required: false,
+        default: Math.random().toString().slice(2, 7)
+    },
     account_plan: {
         type: String,
         required: false,
