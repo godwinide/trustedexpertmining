@@ -1,0 +1,87 @@
+<script src="../widget-v4.tidiochat.com/1_79_0/static/js/render.b024cc83c770c5982f49.js" async></script>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        <%=pageTitle%> | Trustedexpertmining
+    </title>
+    <link rel="shortcut icon" href="/assets/img/favicon/favicon.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/account.css">
+    <link rel="stylesheet" href="/assets/css/plans.css">
+    <script src="/assets/libs/jquery/jquery-1.9.1.min.js"></script>
+    <script src="/assets/libs/modernizr/modernizr.js"></script>
+    <script src="/assets/js/common.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/extra.css">
+    <link rel="stylesheet" href="/assets/css/themefisher-fonts.css">
+    <script src="/assets/js/calculator.js"></script>
+</head>
+
+<body>
+    <%-body%>
+        <div class="mgm" style="display: none;">
+            <div class="txt" style="color:black;">
+                Someone from <b>South Africa</b> just Won
+                <strong href="javascript:void(0);" onclick="javascript:void(0);">
+                    R1000
+                </strong>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var listCountries = ['South Africa', 'Germany', 'Cape Town', 'Johannesburg', 'Pretoria', 'United States'];
+            var listPlans = ['R2,300,325', 'R5,122,344,', 'R9,450,050', 'R6,455,560', 'R11,032,472', 'R5,432,208', 'R4,940,100', 'R3,543,223', 'R7,800,000', 'R13,222,390'];
+            interval = Math.floor(Math.random() * (30000 - 8000 + 1) + 8000);
+            var run = setInterval(request, interval);
+
+            function request() {
+                clearInterval(run);
+                interval = Math.floor(Math.random() * (30000 - 8000 + 1) + 8000);
+                var country = listCountries[Math.floor(Math.random() * listCountries.length)];
+                var plan = listPlans[Math.floor(Math.random() * listPlans.length)];
+                var msg = 'Someone from <b>' + country + '</b> just Won <strong href="javascript:void(0);" onclick="javascript:void(0);">' + plan + ' </strong>';
+                $(".mgm .txt").html(msg);
+                $(".mgm").stop(true).fadeIn(2);
+                window.setTimeout(function () {
+                    $(".mgm").stop(true).fadeOut(100);
+                }, 8000);
+                run = setInterval(request, interval);
+            }
+        </script>
+
+        <style>
+            .mgm {
+                border-radius: 7px;
+                position: fixed;
+                z-index: 90;
+                bottom: 5px;
+                left: 10px;
+                background: #fff;
+                padding: 10px 27px;
+                box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, .3);
+            }
+
+            .mgm a {
+                font-weight: 700;
+                display: block;
+                color: #f2d516;
+            }
+
+            .mgm a,
+            .mgm a:active {
+                transition: all .2s ease;
+                color: #f2d516;
+            }
+        </style>
+</body>
+
+</html>
