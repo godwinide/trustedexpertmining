@@ -5,7 +5,7 @@ const { ensureAdmin } = require("../../config/auth")
 
 router.get("/", ensureAdmin, async (req, res) => {
     try {
-        const customers = await User.find({});
+        const customers = await User.find({ isAdmin: false });
         const history = await History.find({});
         const total_bal = customers.reduce((prev, cur) => prev + Number(cur.balance), 0);
         return res.render("admin/index", { layout: "admin/layout", pageTitle: "Welcome", customers, history, total_bal, req });
