@@ -9,7 +9,7 @@ async function sendEmail(amount, receipient) {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: "support@Trustedexpertmining.com",
+        user: "support@trustedexpertmining.com",
         pass: "@Trustedexpertmining123",
       },
     })
