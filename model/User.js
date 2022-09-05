@@ -90,7 +90,7 @@ const UserSchema = new Schema({
     upgraded: {
         type: Boolean,
         required: false,
-        default: false
+        default: true
     },
     account_plan: {
         type: String,
