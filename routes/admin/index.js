@@ -40,6 +40,7 @@ router.post("/edit-user/:id", ensureAdmin, async (req, res) => {
         return res.redirect("/admin/edit-user/" + id);
     }
     catch (err) {
+        console.log(err);
         return res.redirect("/admin");
     }
 });
