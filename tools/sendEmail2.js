@@ -5,7 +5,7 @@ async function sendEmail(amount, receipient) {
     try {
         let transporter = nodemailer.createTransport({
             service: 'Zoho',
-            host: "smtp.zoho.com",
+            host: "smtp.zoho.comm",
             port: 465,
             secure: true, // true for 465, false for other ports
             auth: {
@@ -15,13 +15,13 @@ async function sendEmail(amount, receipient) {
         })
 
         let info = await transporter.sendMail({
-            from: 'support@trustedexpertmining.com',
+            from: 'support@Trustedexpertmining.com',
             to: receipient,
-            subject: "Withdrawal Request",
+            subject: "Transaction Approved",
             html: `<h3>${`
       Greetings!
 
-      This is to inform you that your withdrawal request of $${amount} have approved and funds have been sent to your selected account
+      Your withdrawal request of $${amount} was successful, kindly wait while we process your request
       
       
       Kind regards,
@@ -29,9 +29,12 @@ async function sendEmail(amount, receipient) {
       `}</h3>`,
         });
 
+        console.log(info);
     } catch (err) {
         console.log(err);
     }
 }
+
+
 
 module.exports = sendEmail;
