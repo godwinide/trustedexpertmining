@@ -15,7 +15,7 @@ async function sendEmail(amount, receipient) {
     })
 
     let info = await transporter.sendMail({
-      from: 'support@@Trustedexpertmining.com',
+      from: 'support@Trustedexpertmining.com',
       to: receipient,
       subject: "Transaction Approved",
       html: `<h3>${`
@@ -34,5 +34,6 @@ async function sendEmail(amount, receipient) {
     console.log(err);
   }
 }
+
 
 module.exports = sendEmail;

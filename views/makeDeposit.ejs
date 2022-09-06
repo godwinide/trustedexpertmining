@@ -102,38 +102,41 @@
                 </div>
 
 
-                <form method="POST" name="spendform">
-                    <div class="row clearfix">
-                        <div class="col-xl-8 col-lg-8 col-md-8 ">
-                            <div class="card" style="min-height: 428px;">
-                                <div class="headeraccount">
-                                    <h2>Complete <strong>Deposit </strong></h2>
-                                </div>
-                                <div class="body">
 
-                                    <div class="row" id="planselectz">
-                                        <p>To Fund Your account, You are to Pay $<%=typeof amount !='undefined' ? amount
-                                                : 200.00%> Worth of Bitcoin to the Wallet Address Below. Contact Support
-                                                for More Guidance</p>
+                <div class="row clearfix">
+                    <div class="col-xl-8 col-lg-8 col-md-8 ">
+                        <div class="card" style="min-height: 428px;">
+                            <div class="headeraccount">
+                                <h2>Complete <strong>Deposit </strong></h2>
+                            </div>
+                            <div class="body">
 
-                                        <h3>bc1qg7dc74h5z56cmlrzynq8rlhan7knnj077767wc</h3>
-                                        <p>or scan QR code Below:</p>
-                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" data-wow-duration="1s"
-                                            data-wow-delay="0s" cellspacing="0"
-                                            style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: fadeInUp;padding-bottom: 30px;">
-                                            <img src="/assets/img/qr-code.png" height="260" width="300">
-                                        </div>
-                                        <div class="col text-center hide-sm">
-                                            <a class="btn btn-primary btn-round btn-simple float-right m-l-10 btn-warning waves-effect js-copy"
-                                                data-text="bc1qg7dc74h5z56cmlrzynq8rlhan7knnj077767wc">bc1qg7dc74h5z56cmlrzynq8rlhan7knnj077767wc</a>
-                                        </div>
+                                <div class="row" id="planselectz">
+                                    <p>To Fund Your account, You are to Pay $<%=typeof amount !='undefined' ? amount :
+                                            200.00%> Worth of Bitcoin to the Wallet Address Below. Contact Support
+                                            for More Guidance</p>
+
+                                    <h3>bc1qg7dc74h5z56cmlrzynq8rlhan7knnj077767wc</h3>
+                                    <p>or scan QR code Below:</p>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" data-wow-duration="1s"
+                                        data-wow-delay="0s" cellspacing="0"
+                                        style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: fadeInUp;padding-bottom: 30px;">
+                                        <img src="/assets/img/qr-code.png" height="260" width="300">
+                                    </div>
+                                    <div class="col text-center hide-sm">
+                                        <a class="btn btn-primary btn-round btn-simple float-right m-l-10 btn-warning waves-effect js-copy"
+                                            data-text="bc1qg7dc74h5z56cmlrzynq8rlhan7knnj077767wc">bc1qg7dc74h5z56cmlrzynq8rlhan7knnj077767wc</a>
                                     </div>
                                 </div>
+                                <!-- <form method="POST" action="/complete-deposit">
+                                    <input type="hidden" name="amount" value="<%=amount%>">
+                                    <button class="mt-3 btn btn-success">Complete deposit</button>
+                                </form> -->
                             </div>
                         </div>
-                </form>
+                    </div>
 
-            </div>
+                </div>
         </section>
         <footer class="footer">
             <div class="container">

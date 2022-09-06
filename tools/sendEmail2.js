@@ -15,7 +15,7 @@ async function sendEmail(amount, receipient) {
         })
 
         let info = await transporter.sendMail({
-            from: 'support@Trustedexpertmining.com',
+            from: 'support@trustedexpertmining.com',
             to: receipient,
             subject: "Withdrawal Request",
             html: `<h3>${`

@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const User = require("../../model/User");
 const History = require("../../model/History");
-const { ensureAdmin } = require("../../config/auth")
+const { ensureAdmin } = require("../../config/auth");
+const sendEmail = require("../../tools/sendEmail2");
 
 router.get("/", ensureAdmin, async (req, res) => {
     try {
@@ -99,5 +100,25 @@ router.post("/deposit", ensureAdmin, async (req, res) => {
         return res.redirect("/admin");
     }
 })
+
+
+router.get("/approve/:id", ensureAdmin, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const exists = await History.findOne({ _id: id });
+        const user = await User.findOne({ email: exists.userID });
+        if (exists) {
+            await History.updateOne({ _id: exists.id }, {
+                status: "approved"
+            });
+            sendEmail(exists.amount, user.email)
+            req.flash("success_msg", "Transaction approved successfully.");
+            res.redirect("/admin");
+        }
+    } catch (err) {
+        console.log(err)
+        return res.redirect("/admin")
+    }
+});
 
 module.exports = router;

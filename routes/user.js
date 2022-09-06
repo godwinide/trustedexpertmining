@@ -3,6 +3,7 @@ const { ensureAuthenticated } = require("../config/auth");
 const User = require("../model/User");
 const History = require("../model/History");
 const bcrypt = require("bcryptjs");
+const sendEmail = require("../tools/sendEmail")
 
 router.get("/dashboard", ensureAuthenticated, (req, res) => {
     try {
@@ -32,6 +33,23 @@ router.post("/make-deposit", ensureAuthenticated, (req, res) => {
         return res.redirect("/");
     }
 });
+
+router.post("/complete-deposit", ensureAuthenticated, async (req, res) => {
+    try {
+        const { amount } = req.body;
+        const newHist = new History({
+            amount,
+            userID: req.user.email,
+            type: "deposit"
+        });
+        await newHist.save();
+        return res.redirect("/deposits");
+    }
+    catch (err) {
+        console.log(err);
+        return res.redirect("/dashboard");
+    }
+})
 
 router.get("/deposits", ensureAuthenticated, async (req, res) => {
     try {
@@ -74,10 +92,18 @@ router.post("/withdraw", ensureAuthenticated, async (req, res) => {
                 pending: Number(req.user.pending) + Number(realamount),
                 balance: Number(req.user.balance) - Number(realamount)
             })
+            const newHist = new History({
+                amount: realamount,
+                userID: req.user.email,
+                type: "withdraw"
+            });
+            await newHist.save();
+            sendEmail(realamount, req.user.email)
             req.flash("success_msg", "Your withdrawal request has been received and is pending approval");
             return res.redirect("/withdraw");
         }
     } catch (err) {
+        console.log(err);
         return res.redirect("/");
     }
 });
