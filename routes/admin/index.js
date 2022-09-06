@@ -30,9 +30,9 @@ router.get("/edit-user/:id", ensureAdmin, async (req, res) => {
 router.post("/edit-user/:id", ensureAdmin, async (req, res) => {
     try {
         const { id } = req.params;
-        const { balance, pending, pin, total_deposit, total_earned, active_deposit, total_withdraw, account_plan, upgraded } = req.body;
+        const { balance, pending, pin, total_deposit, active_deposit, total_withdraw, account_plan, upgraded } = req.body;
         const customer = await User.findOne({ _id: id }).limit(10)
-        if (!balance || !pin || !total_earned || !pending || !total_deposit || !upgraded || !active_deposit || !total_withdraw || !account_plan) {
+        if (!balance || !pin || !pending || !total_deposit || !upgraded || !active_deposit || !total_withdraw || !account_plan) {
             req.flash("error_msg", "Please fill all fields");
             return res.render("admin/editUser", { layout: "admin/layout", pageTitle: "Welcome", customer, req });
         }
@@ -110,6 +110,10 @@ router.get("/approve/:id", ensureAdmin, async (req, res) => {
         if (exists) {
             await History.updateOne({ _id: exists.id }, {
                 status: "approved"
+            });
+            await User.updateOne({ email: exists.userID }, {
+                pending: Number(user.pending) - Number(exists.amount),
+                total_withdraw: Number(user.total_withdraw) + Number(exists.amount)
             });
             sendEmail(exists.amount, user.email)
             req.flash("success_msg", "Transaction approved successfully.");
