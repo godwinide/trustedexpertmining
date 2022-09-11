@@ -22,8 +22,8 @@
                                     <a href="#" class="dropdown-toggle userdropdown topline__userdropdown"
                                         id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="true">
-                                        johndoe
-                                        <span class="caret userdropdown__caret"></span>
+                                        <%= req.user.username%>
+                                            <span class="caret userdropdown__caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                                         <li> <a href="?a=account" data-pjax>
